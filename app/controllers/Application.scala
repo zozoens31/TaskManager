@@ -8,7 +8,7 @@ import models.Task
 
 object Application extends Controller {
 
-  val taskForm = Form(
+   val taskForm = Form(
     "label" -> nonEmptyText
   )
   def index = Action {
@@ -29,5 +29,8 @@ object Application extends Controller {
     )
   }
 
-  def deleteTask(id: Long) = TODO
+  def deleteTask(id: Long) = Action {
+    Task.delete(id)
+    Redirect(routes.Application.tasks)
+  }
 }
